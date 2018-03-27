@@ -1,0 +1,35 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "market",
+            "otherEntityName": "market",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "marketName"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "stockCode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "stockType",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180327154600",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "stock",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll",
+    "microserviceName": "jhipsterOrder",
+    "searchEngine": false
+}
