@@ -1,0 +1,49 @@
+entity Market {
+	marketName String
+}
+
+entity Stock {
+	stockCode String required,
+    listedMarket Market required,
+    stockType String
+}
+
+entity Order {
+	orderId UUID required,
+    stock Stock required,
+    price Double,
+    orderType OrderType,
+    orderTime Instant,
+    executions List
+}
+
+entity Execution {
+	executionId String required
+}
+
+relationship ManyToOne {
+	Stock{listedMarket} to Market
+}
+
+relationship ManyToOne {
+	Order{stock} to Stock
+}
+
+relationship OneToMany {
+	Order{executions} to Execution
+}
+
+enum OrderType {
+    DAY_LIMIT, AM_AUCTION, CLOSING_AUCTION, GTD
+}
+
+
+// Set pagination options
+paginate Order with infinite-scroll
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with csdemo
